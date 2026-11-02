@@ -1,0 +1,177 @@
+
+/* CONFIGURAÇÃO GERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f4f0;
+    color: #333;
+    padding: 35px 8%;
+    line-height: 1.6;
+}
+
+/* CABEÇALHO DA CATEGORIA */
+
+.category-banner {
+    height: 270px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 35px;
+    margin-bottom: 35px;
+    color: white;
+    background-image: linear-gradient(#0005, #0008);
+}
+
+.category-banner h1 {
+    font-size: 34px;
+    color: white;
+    text-align: left;
+    margin: 0;
+}
+
+.category-banner p {
+    color: white;
+    margin-top: 8px;
+}
+
+.category-banner strong {
+    color: white;
+}
+
+/* IMAGENS POR CATEGORIA */
+
+body[data-category="electronics"] .category-banner {
+    background-image:
+    linear-gradient(#0004, #0008),
+    url("https://images.unsplash.com/photo-1498049794561-7780e7231661?w=1400");
+}
+
+body[data-category="clothing"] .category-banner {
+    background-image:
+    linear-gradient(#0004, #0008),
+    url("https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1400");
+}
+
+body[data-category="furniture"] .category-banner {
+    background-image:
+    linear-gradient(#0004, #0008),
+    url("https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1400");
+}
+
+body[data-category="books"] .category-banner {
+    background-image:
+    linear-gradient(#0004, #0008),
+    url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1400");
+}
+
+body[data-category="sports"] .category-banner {
+    background-image:
+    linear-gradient(#0004, #0008),
+    url("https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1400");
+}
+
+/* TÍTULOS */
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #465b46;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* TEXTOS */
+
+p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+strong {
+    color: #333;
+}
+
+/* FORMULÁRIO */
+
+form {
+    max-width: 500px;
+    background: white;
+    padding: 25px;
+    margin-top: 25px;
+    border: 1px solid #e5e2da;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    background: white;
+    font-size: 15px;
+}
+
+/* BOTÃO */
+
+button {
+    padding: 12px 25px;
+    background: #526b50;
+    color: white;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #3d533b;
+}
+
+/* PRODUTOS */
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd9d0;
+    margin: 22px 0;
+}
+
+a {
+    color: #526b50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px;
+    }
+
+    .category-banner {
+        height: 210px;
+        padding: 20px;
+    }
+
+    .category-banner h1 {
+        font-size: 26px;
+    }
+}
