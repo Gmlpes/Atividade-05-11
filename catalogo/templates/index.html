@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo de produtos</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Catálogo de produtos</h1>
+    <p>Selecione uma categoria para consultar os produtos e comparar os preços.</p>
+  </header>
+  <form action="{{ url_for('inicio') }}" method="get">
+    <div><label for="categoria">Categoria de produtos</label>
+      <select name="categoria" id="categoria" required>
+        <option value="">Selecione uma categoria</option>
+        {% for item in categorias %}<option value="{{ item }}" {% if item == categoria %}selected{% endif %}>{{ item }}</option>{% endfor %}
+      </select>
+    </div>
+    <button type="submit">Pesquisar</button>
+  </form>
+  {% if erro %}<div class="notice" role="alert">{{ erro }} <a href="{{ url_for('inicio') }}">Tentar novamente</a></div>{% endif %}
+  {% if analise %}
+    <h2>{{ categoria }}</h2>
+    <section class="metrics" aria-label="Análise da categoria">
+      <article><span>Produtos encontrados</span><strong>{{ analise.quantidade }}</strong></article>
+      <article><span>Menor preço</span><strong>{{ analise.menor.preco|dinheiro if analise.menor else 'Não disponível' }}</strong><small>{{ analise.menor.nome if analise.menor else '' }}</small></article>
+      <article><span>Maior preço</span><strong>{{ analise.maior.preco|dinheiro if analise.maior else 'Não disponível' }}</strong><small>{{ analise.maior.nome if analise.maior else '' }}</small></article>
+      <article><span>Preço médio</span><strong>{{ analise.media|dinheiro }}</strong><small>Produtos com preço disponível</small></article>
+      <article><span>Melhor avaliação</span><strong>{{ analise.melhor.avaliacao if analise.melhor else 'Não disponível' }}{% if analise.melhor %} / 5{% endif %}</strong><small>{{ analise.melhor.nome if analise.melhor else '' }}</small></article>
+    </section>
+    <div class="products">
+    {% for p in produtos %}
+      <article class="product"><span class="tag">{{ p.categoria }}</span><h3>{{ p.nome }}</h3>
+        <p class="price">{{ p.preco|dinheiro }}</p>
+        <p>Avaliação: {{ p.avaliacao if p.avaliacao is not none else 'Não disponível' }}{% if p.avaliacao is not none %} / 5{% endif %}</p>
+        <a href="{{ p.link }}" target="_blank" rel="noopener noreferrer">Ver produto ↗</a>
+      </article>
+    {% else %}<p>Nenhum produto encontrado nesta categoria.</p>{% endfor %}
+    </div>
+  {% endif %}
+</main>
+</body>
+</html>
+
